@@ -11,15 +11,16 @@ from .models import Songs
 
 @api_view(['GET', 'POST'])
 def songs_list(request):
+    songs = Songs.objects.all(request)
+    serializer = SongsSerializer(songs, many = True)
+    # if request.method == 'GET':
 
-    if request.method == 'GET':
-
-        songs
-
-
-
-
+    return Response(serializer.data)
+    
 
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+
+
+
+# @api_view(['GET', 'PUT', 'DELETE'])
